@@ -1,0 +1,7 @@
+.sw[o-z]
+*.pyc
+*.png
+*.jpeg
+*.jpg
+.DS_Store
+
