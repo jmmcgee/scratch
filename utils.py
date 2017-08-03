@@ -51,9 +51,9 @@ def random_graph(n=16, density=0.5, simple=False, directed=False):
 
     # randomly add edges
     num_edges = 0
-    max_edges = int((n*n - n)*density)
+    max_edges = int((n*n - n*int(simple))*density)
     assert(density <= 1.)
-    assert(max_edges < n*n - n)
+    assert(max_edges <= n*n - n*int(simple))
     while num_edges < max_edges:
         r = random.randint(0,n-1)
         s = random.randint(0,n-1)
@@ -62,7 +62,7 @@ def random_graph(n=16, density=0.5, simple=False, directed=False):
             s = random.randint(0,n-1)
         A[r,s] = 1
         num_edges += 1
-        if not directed:
+        if not directed and r != s:
             A[s,r] = A[r,s]
             num_edges +=1
     return A
